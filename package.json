@@ -96,6 +96,8 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "node-sass": "^4.6.1",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
     "sass-loader": "^6.0.6"
   }
 }
