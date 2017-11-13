@@ -2,7 +2,7 @@
  * Common CSS Set
  */
  @import './variable';
- .button{
+ /*.button{
      font-size: 16px;
      box-sizing: border-box;
      display: inline-block;
@@ -14,7 +14,7 @@
      border: 1px solid $primary;
      background-color:$primary;
      color:#FFF;
- }
+ }*/
  .input{
      box-sizing: border-box;
      font-size: 14px;
