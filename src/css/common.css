@@ -15,7 +15,7 @@
      background-color:$primary;
      color:#FFF;
  }*/
- .input{
+ /*.input{
      box-sizing: border-box;
      font-size: 14px;
      padding: 0 4px;
@@ -33,4 +33,4 @@
      &:-webkit-autofill{
          background-color:#FFF;
      }
- }
+ }*/

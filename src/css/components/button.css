@@ -7,7 +7,7 @@
     width: 300px;
     height: 36px;
     cursor: pointer;
-    border-radius: 2px;
+    border-radius: 5px;
     border: 1px solid $primary;
     background-color:$primary;
     color:#FFF;
