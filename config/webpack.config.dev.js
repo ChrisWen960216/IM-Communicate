@@ -178,6 +178,7 @@ module.exports = {
                   ident: 'postcss',
                   plugins: () => [
                     require('postcss-flexbugs-fixes'),
+                    require("postcss-cssnext")(),
                     autoprefixer({
                       browsers: [
                         '>1%',
@@ -187,6 +188,8 @@ module.exports = {
                       ],
                       flexbox: 'no-2009',
                     }),
+                    require("postcss-import")(),
+                    require('postcss-simple-vars'),
                   ],
                 },
               },

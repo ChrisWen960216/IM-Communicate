@@ -1,0 +1,36 @@
+/** Created By ChrisWen
+ * Common CSS Set
+ */
+ @import './variable';
+ .button{
+     font-size: 16px;
+     box-sizing: border-box;
+     display: inline-block;
+     margin: 10px auto;
+     width: 300px;
+     height: 36px;
+     cursor: pointer;
+     border-radius: 2px;
+     border: 1px solid $primary;
+     background-color:$primary;
+     color:#FFF;
+ }
+ .input{
+     box-sizing: border-box;
+     font-size: 14px;
+     padding: 0 4px;
+     display: inline-block;
+     margin: 10px auto 0;
+     width: 300px;
+     height: 36px;
+     line-height: 36px;
+     cursor: pointer;
+     border-radius: 2px;
+     border: 1px solid #e5e5e5;
+     -webkit-tap-highlight-color: transparent;
+     background-color: white;
+     outline: none;
+     &:-webkit-autofill{
+         background-color:#FFF;
+     }
+ }
