@@ -1,0 +1,19 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": "standard",
+  "rules": {
+    "indent": [1, 2],
+    "quotes": [1, "single"],
+    "semi": [1, "always"],
+    "semi-spacing": 0,
+    "no-extra-semi": 1,
+    "no-unused-vars": 0,
+    "no-trailing-spaces": 2,
+    "no-console": 0,
+    "prefer-const": 2,
+    "space-before-function-paren": "off"
+  }
+}
