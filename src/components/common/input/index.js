@@ -3,12 +3,13 @@
  * Common-Component-Button
  *
 */
-import React, { Component } from 'react';
+import React from 'react';
 import '../../../css/components/input.css';
-
+const {Component} = React;
 export default class Input extends Component {
   render() {
-    const { inputText, inputRef, inputName, inputType, placeholder, onInput } = this.props;
+    const {props} = this;
+    const { inputText, inputRef, inputName, inputType, placeholder, onInput } = props;
     return (
       <div className='component_input'>
         <span className='text'>{inputText}</span>
