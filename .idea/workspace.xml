@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ccceccd-4460-4db4-bf00-299b816d00bf" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/common/button/index.js" afterPath="$PROJECT_DIR$/src/components/common/button/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/common/input/index.js" afterPath="$PROJECT_DIR$/src/components/common/input/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/sign/logon.js" afterPath="$PROJECT_DIR$/src/components/sign/logon.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -64,8 +64,8 @@
       <file leaf-file-name="logon.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/sign/logon.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+            <state relative-caret-position="408">
+              <caret line="19" column="6" lean-forward="false" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#40#66#0" expanded="true" />
@@ -84,6 +84,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/components/common/input/index.js" />
         <option value="$PROJECT_DIR$/src/components/common/button/index.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/components/sign/logon.js" />
       </list>
     </option>
@@ -231,12 +232,12 @@
       <workItem from="1510661589870" duration="170000" />
       <workItem from="1510662110910" duration="1156000" />
       <workItem from="1510663339506" duration="1380000" />
-      <workItem from="1510664832529" duration="1801000" />
+      <workItem from="1510664832529" duration="2084000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4507000" />
+    <option name="totallyTimeSpent" value="4790000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -431,10 +432,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="6" column="9" lean-forward="true" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/sign/logon.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        <state relative-caret-position="408">
+          <caret line="19" column="6" lean-forward="false" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#40#66#0" expanded="true" />
