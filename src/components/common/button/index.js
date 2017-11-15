@@ -11,7 +11,7 @@ export default class Button extends Component {
     const {props} = this;
     const {buttonText, onClick, onSubmit} = props;
     return (
-      <button className='button' onClick={ onClick } submit={ onSubmit }>{buttonText}</button>
+      <button className='button' onClick={ onClick } onSubmit={ onSubmit }>{buttonText}</button>
     );
   }
 }
