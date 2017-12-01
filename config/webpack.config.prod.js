@@ -341,7 +341,7 @@ module.exports = {
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new WebpackNotifierPlugin({
       title: 'Webpack Running Status',
-      contentImage: path.join(__dirname, './src/img/logo.png'),
+      contentImage: path.join(__dirname, '../src/img/logo.png'),
       alwaysNotify: true
     })
   ],
