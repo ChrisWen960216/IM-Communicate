@@ -1,3 +1,0 @@
-# IM-Communicate-APP
-Created By ChrisWen, using React, Socket.IO, MongoDB...
------
