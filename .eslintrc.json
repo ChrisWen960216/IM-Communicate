@@ -1,0 +1,20 @@
+{
+    "extends": "react-app",
+    "rules": {
+        "indent": [1,2],
+        "quotes": [1,"single"],
+        "semi": [1,"always"],
+        "semi-spacing": 0,
+        "no-extra-semi": 1,
+        "no-trailing-spaces": 2,
+        "no-console": 0,
+        "prefer-const": 2,
+        "space-before-function-paren": "off",
+        "no-unused-vars": 0,
+        "camelcase": 0
+    },
+    "globals": {
+        "io": true,
+        "socket": true
+    }
+}
