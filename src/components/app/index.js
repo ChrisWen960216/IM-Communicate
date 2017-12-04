@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'antd';
 import { connect }from 'react-redux';
-import { addGuns,delGuns } from '../actions/action';
+import { addGuns,delGuns } from './redux/action';
 import '../../style/App.scss';
 
 class App extends Component {

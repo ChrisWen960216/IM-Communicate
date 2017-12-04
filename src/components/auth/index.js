@@ -1,6 +1,6 @@
 import React,{ Component }from 'react';
 import { connect } from 'react-redux';
-import { login }from './redux';
+import { login }from './redux/action';
 export default class Auth extends Component {
   render(){
     return <h1>This is Auth Page</h1>;
