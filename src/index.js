@@ -7,14 +7,15 @@ import DashBoard from './components/dashboard/index';
 import Auth from './components/auth/index';
 import Store from './store';
 import registerServiceWorker from './net/registerServiceWorker';
+import './config';
 
 ReactDOM.render(
   <Provider store={Store}>
     <BrowserRouter>
       <Switch>
         {/* 只渲染命中的第一个Route */}
-        <Route path='/login' component={App} />
-        <Route path='/dashboard' component={DashBoard}/>
+        <Route path='/login' component={Auth} />
+        <Route path='/dashboard' component={App}/>
         <Redirect to='/dashboard'></Redirect>
       </Switch>
     </BrowserRouter>
