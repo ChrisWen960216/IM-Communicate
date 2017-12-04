@@ -11,7 +11,8 @@
         "prefer-const": 2,
         "space-before-function-paren": "off",
         "no-unused-vars": 0,
-        "camelcase": 0
+        "camelcase": 0,
+        "object-curly-spacing": ["error", "always"]
     },
     "globals": {
         "io": true,
