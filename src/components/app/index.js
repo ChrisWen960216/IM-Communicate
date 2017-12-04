@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Button } from 'antd';
 import { connect }from 'react-redux';
-import { addGuns,delGuns } from './redux/action';
+import { addGuns,delGuns,addGunsAsync } from './redux/action';
 import '../../style/App.scss';
 
 class App extends Component {
   render() {
-    const { store,addGuns,num } = this.props;
+    const { store,addGuns,counter,addGunsAsync } = this.props;
     return (
       <div id="App">
         <header>
           <h1>IM-Communicate APP</h1>
-          <h1>{num}</h1>
-          <Button type='default' onClick={addGuns}>Click Me!</Button>
+          <h1>{counter}</h1>
+          <Button type='default' onClick={addGunsAsync}>Click Me!</Button>
         </header>
       </div>
     );
@@ -20,13 +20,13 @@ class App extends Component {
 }
 function mapStateToProps(state){
   return {
-    num: state
+    counter: state.counter
   };
 }
 
 function mapDispatchToProps(dispatch, ownProps){
   return {
-    addGuns: () => {dispatch(addGuns());}
+    addGunsAsync: () => {dispatch(addGunsAsync());}
   };
 }
 

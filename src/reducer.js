@@ -3,14 +3,13 @@
  *  Reducer
  */
 
-import { ADD_GUNS,DEL_GUNS } from '../actions/actionTypes';
-import { combineReducers } from 'react-redux';
+import { combineReducers } from 'redux';
 import { counter }from './components/app/redux/reducer';
 import { auth } from './components/auth/redux/reducer';
 
-const reducer = combineReducers({
+const Reducer = combineReducers({
   counter: counter,
   auth: auth
 });
 
-export default reducer;
+export default Reducer;
