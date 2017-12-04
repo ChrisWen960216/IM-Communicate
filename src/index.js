@@ -1,7 +1,10 @@
-import React,{ Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider }from 'react-redux';
-import { BrowserRouter,Route,Link,Redirect,Switch }from 'react-router-dom';
+import { BrowserRouter,Route }from 'react-router-dom';
+
+import LogIn from './contanier/login';
+import Register from './contanier/register';
 import Store from './store';
 import registerServiceWorker from './net/registerServiceWorker';
 import './config';
@@ -9,10 +12,10 @@ import './config';
 ReactDOM.render(
   <Provider store={Store}>
     <BrowserRouter>
-      <Switch>
-        {/* 只渲染命中的第一个Route */}
-
-      </Switch>
+      <div>
+        <Route path='/login' exact component = {LogIn}/>
+        <Route path='/register' exact component = {Register}/>
+      </div>
     </BrowserRouter>
   </Provider>
   , document.getElementById('root'));

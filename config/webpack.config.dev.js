@@ -24,7 +24,7 @@ const publicUrl = '';
 const env = getClientEnvironment(publicUrl);
 
 // Custom AntDesign theme-color
-const theme = { 'primary-color': '#7265E6' };
+const theme = { 'brand-primary': '#7265E6' };
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
@@ -152,7 +152,7 @@ module.exports = {
               // It enables caching results in ./node_modules/.cache/babel-loader/
               // directory for faster rebuilds.
               cacheDirectory: true,
-              plugins:[['import', [{ libraryName: 'antd',style: true }, { libraryName: 'antd-mobile' }]]]
+              plugins:[['import', { libraryName: 'antd-mobile',style: true }]]
             },
           },
           // "postcss" loader applies autoprefixer to our CSS.

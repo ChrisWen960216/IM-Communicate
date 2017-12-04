@@ -29,7 +29,7 @@ const publicUrl = publicPath.slice(0, -1);
 // Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl);
 // Custom AntDesign theme-color
-const theme = { 'primary-color': '#7265E6' };
+const theme = { 'brand-primary': '#7265E6' };
 // Assert this just to be safe.
 // Development builds of React are slow and not intended for production.
 if (env.stringified['process.env'].NODE_ENV !== '"production"') {
@@ -151,9 +151,8 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-
               compact: true,
-              plugins:[['import', { libraryName: 'antd',style: true }]]
+              plugins:[['import', { libraryName: 'antd-mobile',style: true }]]
             },
           },
           // The notation here is somewhat confusing.
