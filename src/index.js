@@ -1,19 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
-import { counter } from './reducer/index';
-import { addGun,delGuns } from './actions/action';
-import thunk from 'redux-thunk';
 import { Provider }from 'react-redux';
+import { BrowserRouter,Route,Link }from 'react-router-dom';
 import App from './js/App';
+import store from './store/index';
 import registerServiceWorker from './net/registerServiceWorker';
-
-const store = createStore(counter, applyMiddleware(thunk));
-console.log(store);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <div>
+        <ul>
+          <li><Link to='/main'>主页</Link></li>
+          <li><Link to='/intro'>介绍</Link></li>
+          <li><Link to='/blog'>博客</Link></li>
+        </ul>
+        <Route path='/main' exact component={App} />
+        {/*<App />*/}
+      </div>
+    </BrowserRouter>
   </Provider>
   , document.getElementById('root'));
 registerServiceWorker();
