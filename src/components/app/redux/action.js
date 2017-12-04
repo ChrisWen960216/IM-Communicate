@@ -1,8 +1,3 @@
-/** Created By ChrisWen
- *  17/12/04
- *  action函数
- */
-
 import { ADD_GUNS, DEL_GUNS }from './actionTypes';
 
 export function addGuns() {

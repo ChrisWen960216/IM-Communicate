@@ -1,9 +1,4 @@
-/** Created By ChrisWen
- *  17/12/04 
- *  Reducer
- */
-
-import { ADD_GUNS,DEL_GUNS } from '../actions/actionTypes';
+import { ADD_GUNS, DEL_GUNS }from './actionTypes';
 
 export function counter(state = 0, action) {
   switch(action.type) {
