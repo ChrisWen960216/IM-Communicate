@@ -25,7 +25,7 @@ export function register ({ user, password, repeatPassword, type }) {
   return dispatch => {axios.post('/users/register', { user, password, type }).then(response => {
     if (response.status === 200 && response.data.code === 0) {
       dispatch(registerSuccess({ user, password, type }));
-    }else {
+    } else {
       dispatch(errorMsg(response.data.message));
     }
   });

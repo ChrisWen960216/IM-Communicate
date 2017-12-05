@@ -4,6 +4,7 @@ import { Button, InputItem, List, Radio, WhiteSpace, WingBlank } from 'antd-mobi
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { register } from '../../redux/user/action';
+
 class Register extends Component {
   constructor (props) {
     super(props);
