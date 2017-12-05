@@ -3,6 +3,8 @@ const router = express.Router();
 const UserModel = require('../mongo/schema').getModel('User');
 const utils = require('utility');
 
+const _filter = { password: 0, _v: 0 };
+
 function md5Passworld (password) {
   const salt = 'ChrisWen_extra_string!960216@#Great!';
   return utils.md5(utils.md5(password + salt));
@@ -23,11 +25,14 @@ router.post('/register', (request, response) => {
     if (doc) {
       return response.json({ code: 1, message: '用户已经存在' });
     } else {
-      UserModel.create({ user, password: md5Passworld(password), type }, (error, doc) => {
+      const userModel = new UserModel({ user, password: md5Passworld(password), type });
+      userModel.save((error, doc) => {
         if (error) {
           return response.json({ code: 1, message: '后端出现错误!' });
         } else {
-          return response.json({ code: 0, data: doc });
+          const { user, type, _id } = doc;
+          response.cookie('userId', _id);
+          return response.json({ code: 0, data: { user, type, _id } });
         }
       });
     }
@@ -36,20 +41,33 @@ router.post('/register', (request, response) => {
 
 router.post('/login', (request, response) => {
   const { user, password } = request.body;
-  UserModel.findOne({ user, password: md5Passworld(password) }, { password: 0 }, (error, doc) => {
+  UserModel.findOne({ user, password: md5Passworld(password) }, _filter, (error, doc) => {
     if (!doc) {
       return response.json({ code: 1, message: '用户名和密码不匹配' });
     }
     if (error) {
       return response.json({ code: 1, message: '后端出现错误!' });
     }
+    response.cookie('userId', doc._id);
     return response.json({ code: 0, data: doc });
   });
 });
 
 /* GET users listing. */
 router.get('/info', (request, response, next) => {
-  return response.json({ code: 1 });
+  const { userId } = request.cookies;
+  if (!userId) {
+    return response.json({ code: 1 });
+  }
+  UserModel.findOne({ _id: userId }, _filter, (error, doc) => {
+    if (error) {
+      return response.json({ code: 1, message: '后端出现错误!' });
+    }
+    if (doc) {
+      return response.json({ code: 0, data: doc });
+    }
+  });
+
 });
 
 module.exports = router;

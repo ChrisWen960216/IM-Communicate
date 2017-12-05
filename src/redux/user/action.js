@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { REGISTER_SUCCESS, ERROR_MSG, LOGIN_SUCCESS } from './actionTypes';
+import { REGISTER_SUCCESS, ERROR_MSG, LOGIN_SUCCESS, LOAD_DATA } from './actionTypes';
 
 function errorMsg (message) {
   return {
@@ -19,6 +19,13 @@ function loginSuccess (data) {
   return {
     payload: data,
     type: LOGIN_SUCCESS
+  };
+}
+
+function loadSuccess (data) {
+  return {
+    payload: data,
+    type: LOAD_DATA
   };
 }
 
@@ -53,5 +60,19 @@ export function login ({ user, password }) {
       }
     });
   };
-
 }
+
+export function loadData () {
+  return dispatch => {
+    axios.get('/users/info').then(response => {
+      if (response.status === 200) {
+        if (response.data.code === 0) {
+          dispatch(loadSuccess(response.data));
+        } else {
+          dispatch(errorMsg('请先登录'));
+        }
+      }
+    });
+  };
+}
+

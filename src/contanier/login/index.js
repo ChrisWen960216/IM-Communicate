@@ -33,7 +33,7 @@ class LogIn extends Component {
   render () {
     return (
       <div>
-        {this.props.redirectTo ? <Redirect to={this.props.redirectTo}/>:null}
+        {this.props.user.redirectTo ? <Redirect to={this.props.user.redirectTo}/>:null}
         <Logo />
         <WingBlank>
           <List>
