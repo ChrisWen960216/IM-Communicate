@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import Logo from '../../component/logo';
-import { List, InputItem, WingBlank, WhiteSpace,Button,Radio } from 'antd-mobile';
+import { List, InputItem, WingBlank, WhiteSpace,Button,Radio,Toast } from 'antd-mobile';
 import { connect }from 'react-redux';
 import { register }from '../../redux/user/action';
 class Register extends Component{
@@ -28,16 +28,19 @@ class Register extends Component{
 
   handleRegister(){
     this.props.register(this.state);
+
   }
 
   render(){
     const RadioItem = Radio.RadioItem;
     const { type } = this.state;
+    console.log(this.props);
     return (
       <div>
         <Logo />
         <WingBlank>
           <List>
+            {this.props.user.message ? Toast.fail(`${this.props.user.message}`,2) : null}
             <InputItem onChange={(value)=>{this.handleChange('user', value);}}>用户名称:</InputItem>
             <InputItem type='password' onChange={(value)=>{this.handleChange('password', value);}}>输入密码:</InputItem>
             <InputItem type='password' onChange={(value)=>{this.handleChange('repeatPassword', value);}}>确认密码:</InputItem>
