@@ -1,8 +1,9 @@
 import React,{ Component } from 'react';
 import Logo from '../../component/logo';
 import { List, InputItem, WingBlank, WhiteSpace,Button,Radio } from 'antd-mobile';
-
-export default class Register extends Component{
+import { connect }from 'react-redux';
+import { register }from '../../redux/user/action';
+class Register extends Component{
   constructor(props){
     super(props);
     this.state = {
@@ -12,6 +13,7 @@ export default class Register extends Component{
       type: 'Genius' //牛人
     };
     this.linkToLogIn = this.linkToLogIn.bind(this);
+    this.handleRegister = this.handleRegister.bind(this);
   }
 
   linkToLogIn(){
@@ -21,7 +23,11 @@ export default class Register extends Component{
   handleChange(key,value){
     this.setState({
       [key]: value
-    },()=>{console.table(this.state);});
+    });
+  }
+
+  handleRegister(){
+    this.props.register(this.state);
   }
 
   render(){
@@ -39,10 +45,21 @@ export default class Register extends Component{
             <RadioItem checked={type === 'Boss'} onChange={()=>{this.handleChange('type', 'Boss');}}>Boss</RadioItem>
           </List>
           <WhiteSpace />
-          <Button type='primary'>注册</Button>
+          <Button type='primary' onClick={this.handleRegister}>注册</Button>
           <WhiteSpace />
           <Button type='primary' onClick={this.linkToLogIn}>登录</Button>
         </WingBlank>
       </div>);
   }
 }
+
+function mapStateToProps(state){
+  return { user: state.user };
+}
+function mapDispatchToProps(dispatch, ownProps){
+  return {
+    register: (data) => {dispatch(register(data));}
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
