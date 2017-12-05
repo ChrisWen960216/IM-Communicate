@@ -2,7 +2,6 @@ import axios from 'axios';
 import { REGISTER_SUCCESS, ERROR_MSG } from './actionTypes';
 
 function errorMsg(message){
-  console.log(message);
   return {
     message,
     type: ERROR_MSG
@@ -10,7 +9,6 @@ function errorMsg(message){
 }
 
 function registerSuccess(data){
-  console.log(data);
   return {
     payload: data,
     type: REGISTER_SUCCESS

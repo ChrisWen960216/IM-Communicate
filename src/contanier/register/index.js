@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Logo from '../../component/logo';
-import { List, InputItem, WingBlank, WhiteSpace, Button, Radio, Toast } from 'antd-mobile';
+import { List, InputItem, WingBlank, WhiteSpace, Button, Radio } from 'antd-mobile';
 import { connect }from 'react-redux';
 import { register }from '../../redux/user/action';
 class Register extends Component{
