@@ -1,4 +1,4 @@
-import { REGISTER_SUCCESS,ERROR_MSG } from './actionTypes';
+import { REGISTER_SUCCESS, ERROR_MSG } from './actionTypes';
 
 const initState = {
   message: '',

@@ -1,6 +1,6 @@
-import React,{ Component } from 'react';
+import React, { Component } from 'react';
 import Logo from '../../component/logo';
-import { List, InputItem, WingBlank, WhiteSpace,Button,Radio,Toast } from 'antd-mobile';
+import { List, InputItem, WingBlank, WhiteSpace, Button, Radio, Toast } from 'antd-mobile';
 import { connect }from 'react-redux';
 import { register }from '../../redux/user/action';
 class Register extends Component{
@@ -20,7 +20,7 @@ class Register extends Component{
     this.props.history.push('/login');
   }
 
-  handleChange(key,value){
+  handleChange(key, value){
     this.setState({
       [key]: value
     });
@@ -40,12 +40,12 @@ class Register extends Component{
         <Logo />
         <WingBlank>
           <List>
-            {this.props.user.message ? Toast.fail(`${this.props.user.message}`,2) : null}
-            <InputItem onChange={(value)=>{this.handleChange('user', value);}}>用户名称:</InputItem>
-            <InputItem type='password' onChange={(value)=>{this.handleChange('password', value);}}>输入密码:</InputItem>
-            <InputItem type='password' onChange={(value)=>{this.handleChange('repeatPassword', value);}}>确认密码:</InputItem>
-            <RadioItem checked={type === 'Genuis'} onChange={()=>{this.handleChange('type', 'Genuis');}}>牛人</RadioItem>
-            <RadioItem checked={type === 'Boss'} onChange={()=>{this.handleChange('type', 'Boss');}}>Boss</RadioItem>
+            {/*{this.props.user.message ? Toast.fail(`${this.props.user.message}`, 2) : null}*/}
+            <InputItem onChange={(value) => {this.handleChange('user', value);}}>用户名称:</InputItem>
+            <InputItem type='password' onChange={(value) => {this.handleChange('password', value);}}>输入密码:</InputItem>
+            <InputItem type='password' onChange={(value) => {this.handleChange('repeatPassword', value);}}>确认密码:</InputItem>
+            <RadioItem checked={type === 'Genuis'} onChange={() => {this.handleChange('type', 'Genuis');}}>牛人</RadioItem>
+            <RadioItem checked={type === 'Boss'} onChange={() => {this.handleChange('type', 'Boss');}}>Boss</RadioItem>
           </List>
           <WhiteSpace />
           <Button type='primary' onClick={this.handleRegister}>注册</Button>
