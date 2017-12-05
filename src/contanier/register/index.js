@@ -6,6 +6,9 @@ export default class Register extends Component{
   constructor(props){
     super(props);
     this.state = {
+      user:'',
+      password:'',
+      repeatPassword:'',
       type: 'Genius' //牛人
     };
     this.linkToLogIn = this.linkToLogIn.bind(this);
@@ -13,6 +16,12 @@ export default class Register extends Component{
 
   linkToLogIn(){
     this.props.history.push('/login');
+  }
+
+  handleChange(key,value){
+    this.setState({
+      [key]: value
+    },()=>{console.table(this.state);});
   }
 
   render(){
@@ -23,11 +32,11 @@ export default class Register extends Component{
         <Logo />
         <WingBlank>
           <List>
-            <InputItem>用户名称:</InputItem>
-            <InputItem>输入密码:</InputItem>
-            <InputItem>确认密码:</InputItem>
-            <RadioItem checked={type === 'Genuis'}>牛人</RadioItem>
-            <RadioItem checked={type === 'Boss'}>Boss</RadioItem>
+            <InputItem onChange={(value)=>{this.handleChange('user', value);}}>用户名称:</InputItem>
+            <InputItem type='password' onChange={(value)=>{this.handleChange('password', value);}}>输入密码:</InputItem>
+            <InputItem type='password' onChange={(value)=>{this.handleChange('repeatPassword', value);}}>确认密码:</InputItem>
+            <RadioItem checked={type === 'Genuis'} onChange={()=>{this.handleChange('type', 'Genuis');}}>牛人</RadioItem>
+            <RadioItem checked={type === 'Boss'} onChange={()=>{this.handleChange('type', 'Boss');}}>Boss</RadioItem>
           </List>
           <WhiteSpace />
           <Button type='primary'>注册</Button>
