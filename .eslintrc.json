@@ -9,11 +9,14 @@
         "no-trailing-spaces": 2,
         "no-console": 0,
         "prefer-const": 2,
-        "space-before-function-paren": "off",
+        "space-before-function-paren":"error",
         "camelcase": 0,
         "object-curly-spacing": ["error", "always"],
         "arrow-spacing":"warn",
-        "comma-spacing":"warn"
+        "comma-spacing":"warn",
+        "space-before-blocks":"warn",
+        "keyword-spacing":"warn",
+        "key-spacing":"warn"
     },
     "globals": {
         "io": true,

@@ -18,12 +18,12 @@ const models = {
   }
 };
 
-for (const k in models){
+for (const k in models) {
   mongoose.model(k, new Schema(models[k]));
 }
 
 module.exports = {
-  getModel: function(modelName){
+  getModel: function (modelName) {
     return mongoose.model(modelName);
   }
 };

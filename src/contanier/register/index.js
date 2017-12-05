@@ -1,42 +1,43 @@
 import React, { Component } from 'react';
 import Logo from '../../component/logo';
-import { List, InputItem, WingBlank, WhiteSpace, Button, Radio } from 'antd-mobile';
-import { connect }from 'react-redux';
-import { register }from '../../redux/user/action';
-class Register extends Component{
-  constructor(props){
+import { Button, InputItem, List, Radio, WhiteSpace, WingBlank } from 'antd-mobile';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { register } from '../../redux/user/action';
+class Register extends Component {
+  constructor (props) {
     super(props);
     this.state = {
-      user:'',
-      password:'',
-      repeatPassword:'',
+      user: '',
+      password: '',
+      repeatPassword: '',
       type: 'Genius' //牛人
     };
     this.linkToLogIn = this.linkToLogIn.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
   }
 
-  linkToLogIn(){
+  linkToLogIn () {
     this.props.history.push('/login');
   }
 
-  handleChange(key, value){
+  handleChange (key, value) {
     this.setState({
       [key]: value
     });
   }
 
-  handleRegister(){
+  handleRegister () {
     this.props.register(this.state);
 
   }
 
-  render(){
+  render () {
     const RadioItem = Radio.RadioItem;
     const { type } = this.state;
-    console.log(this.props);
     return (
       <div>
+        {this.props.redirectTo ? <Redirect to={this.props.redirectTo}/>:null}
         <Logo />
         <WingBlank>
           <List>
@@ -56,10 +57,10 @@ class Register extends Component{
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps (state) {
   return { user: state.user };
 }
-function mapDispatchToProps(dispatch, ownProps){
+function mapDispatchToProps (dispatch, ownProps) {
   return {
     register: (data) => {dispatch(register(data));}
   };
