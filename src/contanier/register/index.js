@@ -46,7 +46,7 @@ class Register extends Component {
             <InputItem onChange={(value) => {this.handleChange('user', value);}}>用户名称:</InputItem>
             <InputItem type='password' onChange={(value) => {this.handleChange('password', value);}}>输入密码:</InputItem>
             <InputItem type='password' onChange={(value) => {this.handleChange('repeatPassword', value);}}>确认密码:</InputItem>
-            <RadioItem checked={type === 'Genuis'} onChange={() => {this.handleChange('type', 'Genuis');}}>牛人</RadioItem>
+            <RadioItem checked={type === 'Genius'} onChange={() => {this.handleChange('type', 'Genius');}}>牛人</RadioItem>
             <RadioItem checked={type === 'Boss'} onChange={() => {this.handleChange('type', 'Boss');}}>Boss</RadioItem>
           </List>
           <WhiteSpace />

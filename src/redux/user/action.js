@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { REGISTER_SUCCESS, ERROR_MSG } from './actionTypes';
+import { REGISTER_SUCCESS, ERROR_MSG, LOGIN_SUCCESS } from './actionTypes';
 
 function errorMsg (message) {
   return {
@@ -15,6 +15,13 @@ function registerSuccess (data) {
   };
 }
 
+function loginSuccess (data) {
+  return {
+    payload: data,
+    type: LOGIN_SUCCESS
+  };
+}
+
 export function register ({ user, password, repeatPassword, type }) {
   if (!user || !password || !type) {
     return errorMsg('用户名Or密码不能为空');
@@ -22,12 +29,29 @@ export function register ({ user, password, repeatPassword, type }) {
   if (password !== repeatPassword) {
     return errorMsg('两次密码不一致！');
   }
-  return dispatch => {axios.post('/users/register', { user, password, type }).then(response => {
-    if (response.status === 200 && response.data.code === 0) {
-      dispatch(registerSuccess({ user, password, type }));
-    } else {
-      dispatch(errorMsg(response.data.message));
-    }
-  });
+  return dispatch => {
+    axios.post('/users/register', { user, password, type }).then(response => {
+      if (response.status === 200 && response.data.code === 0) {
+        dispatch(registerSuccess({ user, password, type }));
+      } else {
+        dispatch(errorMsg(response.data.message));
+      }
+    });
   };
+}
+
+export function login ({ user, password }) {
+  if (!user || !password) {
+    return errorMsg('用户名Or密码不能为空');
+  }
+  return dispatch => {
+    axios.post('/users/login', { user, password }).then(response => {
+      if (response.status === 200 && response.data.code === 0) {
+        dispatch(loginSuccess({ user, password }));
+      } else {
+        dispatch(errorMsg(response.data.message));
+      }
+    });
+  };
+
 }
