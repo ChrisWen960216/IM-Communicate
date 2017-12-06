@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { REGISTER_SUCCESS, ERROR_MSG, LOGIN_SUCCESS, LOAD_DATA } from './actionTypes';
+import { ERROR_MSG, LOAD_DATA, AUTH_SUCCESS } from './actionTypes';
 
 function errorMsg (message) {
   return {
@@ -8,18 +8,10 @@ function errorMsg (message) {
   };
 }
 
-function registerSuccess (data) {
+function authSuccess (data) {
   return {
     payload: data,
-    type: REGISTER_SUCCESS
-  };
-}
-
-function loginSuccess (data) {
-  console.log('data', data);
-  return {
-    payload: data,
-    type: LOGIN_SUCCESS
+    type: AUTH_SUCCESS
   };
 }
 
@@ -40,7 +32,7 @@ export function register ({ user, password, repeatPassword, type }) {
   return dispatch => {
     axios.post('/users/register', { user, password, type }).then(response => {
       if (response.status === 200 && response.data.code === 0) {
-        dispatch(registerSuccess({ user, password, type }));
+        dispatch(authSuccess({ user, password, type }));
       } else {
         dispatch(errorMsg(response.data.message));
       }
@@ -56,7 +48,7 @@ export function login ({ user, password }) {
     axios.post('/users/login', { user, password }).then(response => {
       if (response.status === 200 && response.data.code === 0) {
         const type = response.data.data.type;
-        dispatch(loginSuccess({ user, type }));
+        dispatch(authSuccess({ user, type }));
       } else {
         dispatch(errorMsg(response.data.message));
       }
@@ -68,5 +60,15 @@ export function loadData (data) {
   return loadSuccess(data);
 }
 
-export function selectAvatar (avatar) {}
+export function update (data) {
+  return dispatch => {
+    axios.post('/users/update', data).then(response => {
+      if (response.status === 200 && response.data.code === 0) {
+        dispatch(authSuccess(response.data.data));
+      } else {
+        dispatch(errorMsg(response.data.message));
+      }
+    });
+  };
+}
 

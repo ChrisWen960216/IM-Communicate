@@ -9,6 +9,8 @@ import { NavBar, InputItem, TextareaItem, Button } from 'antd-mobile';
 
 import AvatarSelector from '../../component/avatarSelector';
 
+import { update } from '../../redux/user/action';
+
 class BossInfo extends Component {
   constructor (props) {
     super(props);
@@ -20,6 +22,7 @@ class BossInfo extends Component {
       avatar: ''
     };
     this.selectAvatar = this.selectAvatar.bind(this);
+    this.update = this.update.bind(this);
   }
 
   handleChange (key, value) {
@@ -34,6 +37,11 @@ class BossInfo extends Component {
     });
   }
 
+  update () {
+    const data = this.state;
+    this.props.update(data);
+  }
+
   render () {
     return (
       <div>
@@ -43,10 +51,21 @@ class BossInfo extends Component {
         <InputItem onChange={(value) => {this.handleChange('company', value);}}>公司名称</InputItem>
         <InputItem onChange={(value) => {this.handleChange('salary', value);}}>职位薪资</InputItem>
         <TextareaItem onChange={(value) => {this.handleChange('description', value);}} rows={3} title='职位要求' autoHeight/>
-        <Button type='primary'>保存</Button>
+        <Button type='primary' onClick={this.update}>保存</Button>
       </div>
     );
   }
 }
 
-export default connect()(BossInfo);
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  };
+}
+function mapDispatchToProps (dispatch, ownProps) {
+  return {
+    update: data => {dispatch(update(data));}
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BossInfo);
