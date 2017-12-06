@@ -68,3 +68,5 @@ export function loadData (data) {
   return loadSuccess(data);
 }
 
+export function selectAvatar (avatar) {}
+
