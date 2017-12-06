@@ -10,19 +10,17 @@ import { withRouter } from 'react-router-dom';
 import { loadData } from '../../redux/user/action';
 
 class AuthRoute extends Component {
-  constructor (props) {
-    super(props);
+  componentDidMount () {
     const { isAuth } = this.props.user;
     if (!isAuth) {
       this.props.history.push('/login');
+    } else {
+      const publicList = ['/login', '/register'];
+      const pathname = this.props.location.pathname;
+      if (publicList.indexOf(pathname) > -1) {return null;}
+      // Get User Infor
+      this.props.loadData();
     }
-  }
-  componentDidMount () {
-    const publicList = ['/login', '/register'];
-    const pathname = this.props.location.pathname;
-    if (publicList.indexOf(pathname) > -1) {return null;}
-    // Get User Infor
-    this.props.loadData();
   }
   render () {
     return null;
