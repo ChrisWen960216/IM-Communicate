@@ -16,6 +16,7 @@ function registerSuccess (data) {
 }
 
 function loginSuccess (data) {
+  console.log('data', data);
   return {
     payload: data,
     type: LOGIN_SUCCESS
@@ -54,7 +55,8 @@ export function login ({ user, password }) {
   return dispatch => {
     axios.post('/users/login', { user, password }).then(response => {
       if (response.status === 200 && response.data.code === 0) {
-        dispatch(loginSuccess({ user, password }));
+        const type = response.data.data.type;
+        dispatch(loginSuccess({ user, type }));
       } else {
         dispatch(errorMsg(response.data.message));
       }
@@ -62,17 +64,7 @@ export function login ({ user, password }) {
   };
 }
 
-export function loadData () {
-  return dispatch => {
-    axios.get('/users/info').then(response => {
-      if (response.status === 200) {
-        if (response.data.code === 0) {
-          dispatch(loadSuccess(response.data));
-        } else {
-          dispatch(errorMsg('请先登录'));
-        }
-      }
-    });
-  };
+export function loadData (data) {
+  return loadSuccess(data);
 }
 

@@ -4,11 +4,17 @@
  */
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { NavBar } from 'antd-mobile';
 
-export default class BossInfo extends Component {
+class BossInfo extends Component {
   render () {
     return (
-      <h1>BossInfo</h1>
+      <div>
+        <NavBar mode='dark'>BOSS完善信息页面</NavBar>
+      </div>
     );
   }
 }
+
+export default connect()(BossInfo);

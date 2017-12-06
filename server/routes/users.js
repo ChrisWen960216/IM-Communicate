@@ -40,6 +40,7 @@ router.post('/register', (request, response) => {
 });
 
 router.post('/login', (request, response) => {
+  console.log(request.body);
   const { user, password } = request.body;
   UserModel.findOne({ user, password: md5Passworld(password) }, _filter, (error, doc) => {
     if (!doc) {
@@ -57,7 +58,7 @@ router.post('/login', (request, response) => {
 router.get('/info', (request, response, next) => {
   const { userId } = request.cookies;
   if (!userId) {
-    return response.json({ code: 1 });
+    return response.json({ code: 1, message: '请先登录' });
   }
   UserModel.findOne({ _id: userId }, _filter, (error, doc) => {
     if (error) {
