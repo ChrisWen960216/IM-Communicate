@@ -55,11 +55,11 @@ router.post('/login', (request, response) => {
 
 router.post('/update', (request, response) => {
   const { userId } = request.cookie;
-  const {body} = request.body;
+  const { body } = request.body;
   if (!userId) {
     return response.json({ code: 1, message: '请先登录~' });
   }
-
+  UserModel.findByIdAndUpdate();
 });
 
 /* GET users listing. */
