@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavBar } from 'antd-mobile';
 
+import NavLinkBar from '../navlink';
+
 function Boss () {
   return <h1>Boss-Component</h1>;
 }
@@ -56,7 +58,8 @@ class DashBoard extends Component {
     ];
     return (
       <div>
-        <NavBar mode='dard'>{navList.find(value => {return value.path === pathname;})}</NavBar>
+        <NavBar mode='dard'>{navList.find(value => { return value.path === pathname; })}</NavBar>
+        <NavLinkBar />
       </div>
     );
   }
