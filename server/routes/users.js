@@ -55,13 +55,9 @@ router.post('/login', (request, response) => {
 
 router.post('/update', (request, response) => {
   const { userId } = request.cookies;
-<<<<<<< HEAD
   const { body } = request;
   console.log(userId);
   console.log('BODY', request.body);
-=======
-  const { body } = request.body;
->>>>>>> a9e823f84840f0ead44ad2b06d7f0817d731a330
   if (!userId) {
     return response.json({ code: 1, message: '请先登录~' });
   }
