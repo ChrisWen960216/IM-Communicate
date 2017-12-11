@@ -54,17 +54,28 @@ router.post('/login', (request, response) => {
 });
 
 router.post('/update', (request, response) => {
-  const { userId } = request.cookie;
-  const { body } = request.body;
+  const { userId } = request.cookies;
+  const { body } = request;
+  console.log(userId);
+  console.log('BODY', request.body);
   if (!userId) {
     return response.json({ code: 1, message: '请先登录~' });
   }
-  UserModel.findByIdAndUpdate();
+  UserModel.findByIdAndUpdate(userId, body, (error, doc) => {
+    // console.log('DOC', doc);
+    const { user, type } = doc;
+    const data = Object.assign({}, {
+      user: user,
+      type: type
+    }, body );
+
+    return response.json({ code: 0, data: data });
+  });
 });
 
 /* GET users listing. */
 router.get('/info', (request, response, next) => {
-  const { userId } = request.cookie;
+  const { userId } = request.cookies;
   if (!userId) {
     return response.json({ code: 1, message: '请先登录' });
   }
