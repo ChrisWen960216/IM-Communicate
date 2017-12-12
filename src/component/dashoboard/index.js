@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Switch, Route } from 'react-router-dom';
 import { NavBar } from 'antd-mobile';
 
+import BossComponent from '../boss';
+import GeniusComponent from '../genius';
 import NavLinkBar from '../navlink';
 
-function Boss () {
-  return <h1>Boss-Component</h1>;
-}
-
-function Genius () {
-  return <h1>Genius-Component</h1>;
-}
 function message () {
   return <h1>消息列表</h1>;
 }
@@ -27,14 +23,13 @@ class DashBoard extends Component {
       return null;
     }
     const { pathname } = this.props.location;
-    console.log(user);
     const navList = [
       {
         path: '/boss',
         text: '牛人',
         icon: 'boss',
         title: 'Genius列表',
-        component: Boss,
+        component: BossComponent,
         hide: user.type === 'Genius'
       },
       {
@@ -42,7 +37,7 @@ class DashBoard extends Component {
         text: 'BOSS',
         icon: 'job',
         title: 'Boss列表',
-        component: Genius,
+        component: GeniusComponent,
         hide: user.type === 'Boss'
       },
       {
@@ -63,9 +58,18 @@ class DashBoard extends Component {
 
     const navBarTitle = navList.find(item => item.path === pathname).title;
 
+    const userList = navList.map((item) => {
+      return <Route key={item.path} path={item.path} component={item.component} />;
+    });
+
     return (
       <div id='dashboard'>
-        <NavBar mode='dard' >{navBarTitle}</NavBar>
+        <NavBar mode='dard' className='fix-header'>{navBarTitle}</NavBar>
+        <div>
+          <Switch>
+            {userList}
+          </Switch>
+        </div>
         <NavLinkBar data={navList}/>
       </div>
     );

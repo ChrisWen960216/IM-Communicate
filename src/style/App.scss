@@ -1,8 +1,10 @@
 @import './variates/color';
-.am-navbar{
-  position: fixed;
-  top:0;
-  width: 100%;
+.fix-header{
+  .am-navbar{
+    position: fixed;
+    top:0;
+    width: 100%;
+  }
 }
 
 .am-tab-bar-bar{

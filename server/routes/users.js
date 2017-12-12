@@ -11,8 +11,9 @@ function md5Passworld (password) {
 }
 
 router.get('/list', (request, response) => {
-  UserModel.find({}, (err, doc) => {
-    return response.json(doc);
+  const { type } = request.query;
+  UserModel.find({ type }, (err, doc) => {
+    return response.json({ code: 0, data: doc });
   });
 });
 
