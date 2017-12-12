@@ -9,19 +9,19 @@ class NavLinkBar extends Component {
   }
   render () {
     console.log(this.props);
-    const navList = this.props.user.data.filter(item => !item.hidden);
-    return (
-      <TabBar>
-        {navList.map((item, index) => {
-          return (
-            <TabBar.Item
-              key={index}
-              title={item.text}
-              // icon={{ url: require(`./img/${item.icon}.png`) }}
-            >
-            </TabBar.Item>);
-        })}
-      </TabBar>
+    // const navList = this.props.user.data.filter(item => !item.hidden);
+    return (<h1>123</h1>
+    // <TabBar>
+    //   {/* {navList.map((item, index) => {
+    //     return (
+    //       <TabBar.Item
+    //         key={index}
+    //         title={item.text}
+    //         // icon={{ url: require(`./img/${item.icon}.png`) }}
+    //       >
+    //       </TabBar.Item>);
+    //   })} */}
+    // </TabBar>
     );
   }
 }

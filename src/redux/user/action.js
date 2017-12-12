@@ -8,7 +8,8 @@ function errorMsg (message) {
   };
 }
 
-function authSuccess (data) {
+function authSuccess (object) {
+  const { password, ...data } = object;
   return {
     payload: data,
     type: AUTH_SUCCESS

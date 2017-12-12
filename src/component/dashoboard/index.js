@@ -58,7 +58,7 @@ class DashBoard extends Component {
     ];
     return (
       <div>
-        <NavBar mode='dard'>{navList.find(value => { return value.path === pathname; })}</NavBar>
+        {/* <NavBar mode='dard'>{navList.find(value => { return value.path === pathname; })}</NavBar> */}
         <NavLinkBar />
       </div>
     );
