@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavBar } from 'antd-mobile';
+import { NavBar, TabBar } from 'antd-mobile';
 
 import NavLinkBar from '../navlink';
 
@@ -23,7 +23,8 @@ class DashBoard extends Component {
 
   render () {
     const { user } = this.props;
-    const pathname = this.props.location;
+    console.log(user);
+    const { pathname } = this.props.location;
     const navList = [
       {
         path: '/boss',
@@ -56,9 +57,12 @@ class DashBoard extends Component {
         component: userCeneter
       }
     ];
+
+    const navBarTitle = navList.find(item => item.path === pathname).title;
+
     return (
-      <div>
-        {/* <NavBar mode='dard'>{navList.find(value => { return value.path === pathname; })}</NavBar> */}
+      <div id='dashboard'>
+        <NavBar mode='dard' >{navBarTitle}</NavBar>
         <NavLinkBar />
       </div>
     );

@@ -17,8 +17,12 @@ function authSuccess (object) {
 }
 
 function loadSuccess (data) {
+  console.log({
+    payload: data.data,
+    type: LOAD_DATA
+  });
   return {
-    payload: data,
+    payload: data.data,
     type: LOAD_DATA
   };
 }

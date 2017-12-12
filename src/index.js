@@ -15,6 +15,7 @@ import Store from './store';
 import registerServiceWorker from './net/registerServiceWorker';
 import './config';
 
+// Boss Genius me msg
 ReactDOM.render(
   <Provider store={Store}>
     <BrowserRouter>

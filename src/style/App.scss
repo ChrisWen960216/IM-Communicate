@@ -7,4 +7,17 @@
   padding: 10px 0;
   text-align: center;
   border-bottom: 1px solid $primary;
+  .am-tab-bar{
+    position: fixed;
+    bottom: 0;
+    width: 100%
+  }
+  
+  .am-navbar{
+    position: fixed;
+    top:0;
+    width: 100%;
+  }
 }
+
+
