@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import propTypes from 'prop-types';
 import { TabBar } from 'antd-mobile';
 
@@ -9,19 +10,25 @@ class NavLinkBar extends Component {
   }
   render () {
     console.log(this.props);
-    // const navList = this.props.user.data.filter(item => !item.hidden);
-    return (<h1>123</h1>
-    // <TabBar>
-    //   {/* {navList.map((item, index) => {
-    //     return (
-    //       <TabBar.Item
-    //         key={index}
-    //         title={item.text}
-    //         // icon={{ url: require(`./img/${item.icon}.png`) }}
-    //       >
-    //       </TabBar.Item>);
-    //   })} */}
-    // </TabBar>
+    // const { navList } = this.props.data;
+    const navList = this.props.data.filter(item => !item.hide);
+    const { pathname } = this.props.location;
+    console.log(navList);
+    return (
+      <TabBar>
+        {navList.map((item, index) => {
+          return (
+            <TabBar.Item
+              key={index}
+              title={item.text}
+              icon={{ uri: require(`../../img/navimg/${item.icon}.png`) }}
+              selectedIcon={{ uri: require(`../../img/navimg/${item.icon}-active.png`) }}
+              selected={pathname === item.path}
+              onPress={() => { this.props.history.push(item.path); }}
+            >
+            </TabBar.Item>);
+        })}
+      </TabBar>
     );
   }
 }
@@ -35,4 +42,4 @@ function mapDispatchToProps (dispatch, ownProps) {
   return {};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavLinkBar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavLinkBar));

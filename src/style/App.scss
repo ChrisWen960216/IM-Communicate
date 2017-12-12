@@ -1,23 +1,14 @@
 @import './variates/color';
+.am-navbar{
+  position: fixed;
+  top:0;
+  width: 100%;
+}
 
-#App{
-  margin: 0 auto;
-  max-width: 500px;
-  min-width: 300px;
-  padding: 10px 0;
-  text-align: center;
-  border-bottom: 1px solid $primary;
-  .am-tab-bar{
-    position: fixed;
-    bottom: 0;
-    width: 100%
-  }
-  
-  .am-navbar{
-    position: fixed;
-    top:0;
-    width: 100%;
-  }
+.am-tab-bar-bar{
+  position: fixed;
+  bottom: 0;
+  width: 100%
 }
 
 

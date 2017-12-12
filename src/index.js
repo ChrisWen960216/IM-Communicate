@@ -14,6 +14,7 @@ import DashBoard from './component/dashoboard';
 import Store from './store';
 import registerServiceWorker from './net/registerServiceWorker';
 import './config';
+import './style/App.scss';
 
 // Boss Genius me msg
 ReactDOM.render(
