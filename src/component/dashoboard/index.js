@@ -6,6 +6,7 @@ import { NavBar } from 'antd-mobile';
 import BossComponent from '../boss';
 import GeniusComponent from '../genius';
 import NavLinkBar from '../navlink';
+import User from '../user';
 
 function message () {
   return <h1>消息列表</h1>;
@@ -52,7 +53,7 @@ class DashBoard extends Component {
         text: '我',
         icon: 'user',
         title: '用户中心',
-        component: userCeneter
+        component: User
       }
     ];
 

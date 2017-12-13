@@ -12,6 +12,7 @@ import AvatarSelector from '../../component/avatarSelector';
 
 import { update } from '../../redux/user/action';
 
+
 class GeniusInfo extends Component {
   constructor (props) {
     super(props);
