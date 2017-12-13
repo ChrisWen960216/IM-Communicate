@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ERROR_MSG, LOAD_DATA, AUTH_SUCCESS } from './actionTypes';
+import { ERROR_MSG, LOAD_DATA, AUTH_SUCCESS, LOG_OUT } from './actionTypes';
 
 function errorMsg (message) {
   return {
@@ -17,10 +17,6 @@ function authSuccess (object) {
 }
 
 function loadSuccess (data) {
-  console.log({
-    payload: data.data,
-    type: LOAD_DATA
-  });
   return {
     payload: data.data,
     type: LOAD_DATA
@@ -52,12 +48,17 @@ export function login ({ user, password }) {
   return dispatch => {
     axios.post('/users/login', { user, password }).then(response => {
       if (response.status === 200 && response.data.code === 0) {
-        const type = response.data.data.type;
-        dispatch(authSuccess({ user, type }));
+        dispatch(authSuccess( response.data.data ));
       } else {
         dispatch(errorMsg(response.data.message));
       }
     });
+  };
+}
+
+export function logOut () {
+  return {
+    type: LOG_OUT
   };
 }
 

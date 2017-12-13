@@ -1,28 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { NavBar } from 'antd-mobile';
 
 import BossComponent from '../boss';
 import GeniusComponent from '../genius';
 import NavLinkBar from '../navlink';
 import User from '../user';
+//import { Redirect } from '../../../../../Library/Caches/typescript/2.6/node_modules/@types/react-router';
 
 function message () {
   return <h1>消息列表</h1>;
 }
 
-function userCeneter () {
-  return <h1>个人中心</h1>;
-}
 
 class DashBoard extends Component {
-
   render () {
     const { user } = this.props;
-    if (!user.type) {
-      return null;
-    }
     const { pathname } = this.props.location;
     const navList = [
       {

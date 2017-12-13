@@ -1,4 +1,4 @@
-import { ERROR_MSG, LOAD_DATA, AUTH_SUCCESS } from './actionTypes';
+import { ERROR_MSG, LOAD_DATA, AUTH_SUCCESS, LOG_OUT } from './actionTypes';
 import { getRedirectPath } from '../../util';
 
 const initState = {
@@ -16,6 +16,9 @@ export function user (state = initState, action) {
     return { ...state, message: '', ...action.payload };
   case ERROR_MSG:
     return { ...state, message: action.message };
+  case LOG_OUT:
+    console.log({ ...initState, redirectTo: '/login' });
+    return { ...initState, redirectTo: '/login' };
   default:
     return state;
   }
