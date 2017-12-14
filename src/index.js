@@ -8,6 +8,7 @@ import Register from './contanier/register';
 import AuthRoute from './component/authRouter';
 import BossInfo from './contanier/bossInfo';
 import GeniusInfo from './contanier/geniusInfo';
+import Chat from './component/chat';
 
 import DashBoard from './component/dashoboard';
 
@@ -27,6 +28,7 @@ ReactDOM.render(
           <Route path='/register' exact component = {Register}/>
           <Route path='/bossinfo' component={BossInfo} />
           <Route path='/geniusinfo' component={GeniusInfo} />
+          <Route path='/chat/:user' component={Chat}/>
           <Route component={DashBoard}/>
         </Switch>
       </div>
