@@ -5,7 +5,9 @@ const socket_io = require('socket.io');
 socketio.getSocketio = function (server) {
   const io = socket_io.listen(server);
   io.on('connect', socket => {
-    console.log('HAHA');
+    socket.on('sendMessage', data => {
+      io.emit('receiveMessage', data);
+    });
   });
 };
 
