@@ -13,9 +13,9 @@ class BossComponent extends Component {
     this.props.getUserList.call(undefined, 'Genius');
   }
   render () {
-    if (!this.props.chat) {
-      return (<h1>没有什么好看的-Genius</h1>);
-    }
+    // if (!this.props.chat) {
+    //   return (<h1>没有什么好看的-Genius</h1>);
+    // }
     return (<UserCard userList={this.props.chat}/>);
   }
 }

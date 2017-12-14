@@ -31,7 +31,7 @@ class User extends Component {
     const { user } = this.props;
     const { Item } = List;
     const { Brief } = Item;
-    console.log('render', this.props.user);
+    //console.log('render', this.props.user);
     return user.user ? (
       <div>
         <Result

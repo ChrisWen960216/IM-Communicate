@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default function CreateHOC (component) {
-  return class WrappedComponent extends Component {
+export default function CreateHOC (Component) {
+  return class WrappedComponent extends React.Component {
     constructor (props) {
       super(props);
       this.state = {};
@@ -15,7 +15,9 @@ export default function CreateHOC (component) {
     }
 
     render () {
-
+      return (
+        <Component handleChange={this.handleChange} state={this.state} {...this.props} />
+      );
     }
   };
 }

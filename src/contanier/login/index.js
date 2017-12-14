@@ -9,23 +9,25 @@ import { List, InputItem, WingBlank, WhiteSpace, Button } from 'antd-mobile';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../redux/user/action';
 
+import CreateHOC from '../../component/hoc';
+
 class LogIn extends Component {
   constructor (props) {
     super(props);
-    this.state = {
-      user: '',
-      password: ''
-    };
+    // this.state = {
+    //   user: '',
+    //   password: ''
+    // };
     this.handleLogin = this.handleLogin.bind(this);
     this.linkToRegister = this.linkToRegister.bind(this);
   }
-  handleChange (key, value) {
-    this.setState({
-      [key]: value
-    });
-  }
+  // handleChange (key, value) {
+  //   this.setState({
+  //     [key]: value
+  //   });
+  // }
   handleLogin () {
-    this.props.login(this.state);
+    this.props.login(this.props.state);
   }
   linkToRegister () {
     this.props.history.push('/register');
@@ -37,8 +39,8 @@ class LogIn extends Component {
         <Logo />
         <WingBlank>
           <List>
-            <InputItem  onChange={(value) => {this.handleChange('user', value);}}>用户:</InputItem>
-            <InputItem type='password' onChange={(value) => {this.handleChange('password', value);}}>密码:</InputItem>
+            <InputItem  onChange={(value) => {this.props.handleChange('user', value);}}>用户:</InputItem>
+            <InputItem type='password' onChange={(value) => {this.props.handleChange('password', value);}}>密码:</InputItem>
           </List>
           <WhiteSpace />
           <Button type='primary' onClick={this.handleLogin}>登录</Button>
@@ -60,4 +62,4 @@ function mapDispatchToProps (dispatch, ownProps) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogIn);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateHOC(LogIn));
