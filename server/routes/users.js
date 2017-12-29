@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const UserModel = require('../mongo/schema').getModel('User');
+const ChatModel = require('../mongo/schema').getModel('Chat');
 const utils = require('utility');
 
 const _filter = { password: 0, _v: 0 };
@@ -84,7 +85,15 @@ router.get('/info', (request, response, next) => {
       return response.json({ code: 0, data: doc });
     }
   });
+});
 
+router.get('/getmsglist', (request, response) => {
+  const user = request.cookies.user;
+  ChatModel.find({ '$or': [{ from: user, to: user }] },  (error, doc) => {
+    if (!error) {
+      return response.json({ code: 0, data: doc });
+    }
+  });
 });
 
 module.exports = router;

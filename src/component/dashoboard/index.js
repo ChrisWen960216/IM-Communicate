@@ -50,8 +50,9 @@ class DashBoard extends Component {
         component: User
       }
     ];
-
+    //console.log(navList.find(item => item.path === pathname));
     const navBarTitle = navList.find(item => item.path === pathname).title;
+
 
     const userList = navList.map((item) => {
       return <Route key={item.path} path={item.path} component={item.component} />;

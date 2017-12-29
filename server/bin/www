@@ -25,7 +25,8 @@ io.getSocketio(server);
 /**
  * Listen on provided port, on all network interfaces.
  */
-mongoose.connect('mongodb://localhost/imDB');
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/imDB', { useMongoClient: true });
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);

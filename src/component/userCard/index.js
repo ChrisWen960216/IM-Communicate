@@ -10,12 +10,14 @@ class UserCard extends Component {
   // }
 
   handleClick (item) {
-    console.log(`/chat/${item.user}`);
     this.props.history.push(`/chat/${item.user}`);
   }
   render () {
     const { Header, Body } = Card;
     const { userList } = this.props;
+    if (!userList) {
+      return (<h1>没人给你看</h1>);
+    }
     return (
       <WingBlank>
         {userList.filter(item => item.avatar).map((item, index) => {
