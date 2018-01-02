@@ -6,6 +6,7 @@ socketio.getSocketio = function (server) {
   const io = socket_io.listen(server);
   io.on('connect', socket => {
     socket.on('sendMessage', data => {
+      console.log(data);
       io.emit('receiveMessage', data);
     });
   });

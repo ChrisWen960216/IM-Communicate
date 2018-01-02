@@ -19,3 +19,9 @@ export function getMessageList () {
     });
   };
 }
+
+export function sendMessage ({ from, to, message }) {
+  return dispatch => {
+    socket.emit('sendMessage', { from, to, message });
+  };
+}
