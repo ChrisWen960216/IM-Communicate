@@ -7,7 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('server:server');
 var http = require('http');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const io = require('../socket');
 /**
  * Get port from environment and store in Express.
@@ -25,7 +25,8 @@ io.getSocketio(server);
 /**
  * Listen on provided port, on all network interfaces.
  */
-// mongoose.connect('mongodb://localhost/imDB');
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/imDB', { useMongoClient: true });
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);

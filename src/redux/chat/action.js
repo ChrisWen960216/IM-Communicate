@@ -1,18 +1,20 @@
-import { USER_LIST } from './actionTypes';
-import axios from 'axios';
+import axions from 'axios';
+import io from 'socket.io-client';
+import { MESSAGE_LIST, MESSAGE_READ, MESSAGE_RECV } from './actionTypes';
+const socket = io('ws://localhost:7000');
 
-function userList (data) {
+function messageList (messages) {
   return {
-    type: USER_LIST,
-    payload: data
+    type: MESSAGE_LIST,
+    payload: messages
   };
 }
 
-export function getUserList (type) {
+export function getMessageList () {
   return dispatch => {
-    axios.get(`/users/list?type=${type}`).then(response => {
-      if (response.data.code === 0) {
-        dispatch(userList(response.data));
+    return axions.get('/users/getmsglist').then(response => {
+      if (response.status === 200 && response.data.code === 0) {
+        return dispatch(messageList(response.data.msgs));
       }
     });
   };

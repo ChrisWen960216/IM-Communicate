@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getUserList } from '../../redux/chat/action';
+import { getUserList } from '../../redux/chatUser/action';
 import UserCard from '../userCard/';
 
 class GeniusComponent extends Component {
@@ -15,16 +15,16 @@ class GeniusComponent extends Component {
     this.props.getUserList.call(undefined, 'Boss');
   }
   render () {
-    if (!this.props.chat) {
+    if (!this.props.chatUser) {
       return (<h1>没有什么好看的</h1>);
     }
-    return (<UserCard userList={this.props.chat}/>);
+    return (<UserCard userList={this.props.chatUser}/>);
   }
 }
 
 function mapStateToProps (state) {
   return {
-    chat: state.chat.userList.data
+    chatUser: state.chatUser.userList.data
   };
 }
 

@@ -16,6 +16,9 @@ class UserCard extends Component {
   render () {
     const { Header, Body } = Card;
     const { userList } = this.props;
+    if (!userList) {
+      return (<h1>没人给你看</h1>);
+    }
     return (
       <WingBlank>
         {userList.filter(item => item.avatar).map((item, index) => {

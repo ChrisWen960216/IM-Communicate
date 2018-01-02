@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client';
 import { List, InputItem } from 'antd-mobile';
-import { connect } from 'redux';
-
-import { sendMessage, getMessageList } from '../../redux/chat/action';
+import { connect } from 'react-redux';
+import { getMessageList } from '../../redux/chat/action';
 
 const socket = io('ws://localhost:7000');
 
@@ -25,11 +24,12 @@ class Chat extends Component {
   }
 
   componentDidMount () {
-    socket.on('receiveMessage', data => {
-      this.setState({
-        message: [...this.state.message, data.text]
-      });
-    });
+    this.props.getMessageList();
+    // socket.on('receiveMessage', data => {
+    //   this.setState({
+    //     message: [...this.state.message, data.text]
+    //   });
+    // });
   }
   render () {
     return (
@@ -52,13 +52,13 @@ class Chat extends Component {
 
 function mapStateToProps (state) {
   return {
-    user: state.user
+    chat: state.chat
   };
 }
 
 function mapDispatchToProps (dispatch, ownProps) {
   return {
-    sendMessage: (message) => {return dispatch(sendMessage(message));}
+    getMessageList: () => {dispatch(getMessageList());}
   };
 }
 
