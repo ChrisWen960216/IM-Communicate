@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost:27017/imDB', { useMongoClient: true });
+
 const models = {
   User: {
     user: { type: String, require: true },
