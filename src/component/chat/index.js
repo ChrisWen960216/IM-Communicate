@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client';
-import { List, InputItem } from 'antd-mobile';
+import { List, InputItem, NavBar } from 'antd-mobile';
 import { connect } from 'react-redux';
-import { getMessageList, sendMessage } from '../../redux/chat/action';
+import { getMessageList, sendMessage, receiveMessage } from '../../redux/chat/action';
 
 const socket = io('ws://localhost:7000');
 
@@ -26,6 +26,7 @@ class Chat extends Component {
 
   componentDidMount () {
     this.props.getMessageList();
+    this.props.receiveMessage();
     socket.on('receiveMessage', data => {
       this.setState({
         message: [...this.state.message, data.text]
@@ -33,10 +34,20 @@ class Chat extends Component {
     });
   }
   render () {
+    const user = this.props.match.params.user;
+    const Item = List.Item;
     return (
       <div>
-        {this.state.message.map((item, index) => {
-          return <p key={index}>{item}</p>;
+        <NavBar mode='dark'>{this.props.match.params.user}</NavBar>
+        {this.props.chat.chatMessage.map((item, index) => {
+          return item._id === user ? (
+            <List  key={index}>
+              <Item>对方发来的: {item.content}</Item>
+            </List>) :
+            (
+              <List key={index}>
+                <Item extra=''>我发送的: {item.content}</Item>
+              </List>);
         })}
         <List id='chat'>
           <InputItem
@@ -61,7 +72,8 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch, ownProps) {
   return {
     getMessageList: () => { dispatch(getMessageList()); },
-    sendMessage: ({ from, to, message }) => {dispatch(sendMessage({ from, to, message }));}
+    sendMessage: ({ from, to, message }) => { dispatch(sendMessage({ from, to, message })); },
+    receiveMessage: () => {dispatch(receiveMessage());}
   };
 }
 

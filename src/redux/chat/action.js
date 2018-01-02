@@ -10,11 +10,19 @@ function messageList (messages) {
   };
 }
 
+function messageReceive (message) {
+  return {
+    type: MESSAGE_RECV,
+    payload: message
+  };
+}
+
 export function getMessageList () {
   return dispatch => {
     return axions.get('/users/getmsglist').then(response => {
       if (response.status === 200 && response.data.code === 0) {
-        return dispatch(messageList(response.data.msgs));
+        //console.log(response.data);
+        return dispatch(messageList(response.data.data));
       }
     });
   };
@@ -23,5 +31,13 @@ export function getMessageList () {
 export function sendMessage ({ from, to, message }) {
   return dispatch => {
     socket.emit('sendMessage', { from, to, message });
+  };
+}
+
+export function receiveMessage () {
+  return dispatch => {
+    socket.on('receiveMessage', data => {
+      return dispatch(messageReceive(data));
+    });
   };
 }

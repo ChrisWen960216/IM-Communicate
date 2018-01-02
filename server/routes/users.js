@@ -88,9 +88,13 @@ router.get('/info', (request, response, next) => {
 });
 
 router.get('/getmsglist', (request, response) => {
-  const user = request.cookies.user;
-  ChatModel.find({ '$or': [{ from: user, to: user }] },  (error, doc) => {
+  const user = request.cookies.userId;
+  console.log('user', user);
+  ChatModel.find({ from: user },  (error, doc) => {
     if (!error) {
+      console.log(error, doc);
+      // /console.log(request.cookies.userId);
+      // console.log(request);
       return response.json({ code: 0, data: doc });
     }
   });
